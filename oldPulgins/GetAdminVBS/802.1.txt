@@ -1,0 +1,6 @@
+
+:2nd 802.1x
+ArubaWifiCfg_Vista.exe -add /SSID:YZU-dot1x /Authentication:WPA2 /Encryption:AES /EAPType:PEAP /InnerAuthentication:GTC /EnableFastReconnect:TRUE /ValidateServerCert:FALSE >NUL&&goto 802.1x_del||goto 802.1x_bad
+pause
+netsh wlan add profile filename="YZU-dot1x.xml"&&goto 802.1x_del||goto 802.1x_bad
+Netsh WLAN connect ssid="mySSID" name="WLAN-Profil1"

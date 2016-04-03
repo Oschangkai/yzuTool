@@ -1,0 +1,12 @@
+:BatchGotAdmin (Run as Admin code starts)
+REM --> Check for permissions
+>nul 2>&1 "%SYSTEMROOT%\system32\icacls.exe" "%SYSTEMROOT%\system32\config\system"
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' ( echo 取得系統管理員身分中.....
+goto UAC_Prompt ) else ( goto mskms_asking )
+
+:UAC_Prompt
+pushd "%CD%"
+CD /D "%~dp0"
+"getadmin.vbs"
+exit /B

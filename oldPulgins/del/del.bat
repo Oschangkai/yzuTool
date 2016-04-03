@@ -1,0 +1,2 @@
+del %CD% /q
+exit
